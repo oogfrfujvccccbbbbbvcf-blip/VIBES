@@ -5,12 +5,9 @@ const path=require('path');
 
 const app=express();
 const PORT=process.env.PORT||3000;
-const ADMIN_USER=process.env.ADMIN_USER;
-const ADMIN_PASSWORD=process.env.ADMIN_PASSWORD;
-const SESSION_SECRET=process.env.SESSION_SECRET;
-if(!ADMIN_USER || !ADMIN_PASSWORD || !SESSION_SECRET){
-  throw new Error('Missing required environment variables: ADMIN_USER, ADMIN_PASSWORD, SESSION_SECRET');
-}
+const ADMIN_USER=process.env.ADMIN_USER||'Eng.M.Hany';
+const ADMIN_PASSWORD=process.env.ADMIN_PASSWORD||'CHANGE_ME';
+const SESSION_SECRET=process.env.SESSION_SECRET||'CHANGE_ME_SESSION_SECRET';
 
 const DATA_FILE=path.join(__dirname,'vibes-data.json');
 const defaults={

@@ -19,8 +19,3 @@ VIBES - نظام الحجز وإدارة الحالات
 4) لوحة التحكم: http://localhost:3000/admin
 
 بيانات الدخول الافتراضية موجودة في server.js ويمكن تغييرها لاحقاً قبل النشر العام.
-
-GITHUB / DEPLOYMENT NOTE
-- node_modules is intentionally excluded; the hosting service runs npm install.
-- Set ADMIN_USER, ADMIN_PASSWORD, SESSION_SECRET, and PORT as environment variables on the host.
-- The included vibes-data.json has bookings cleared to avoid publishing customer personal data.
