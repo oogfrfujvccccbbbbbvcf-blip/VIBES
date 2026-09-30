@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIBES | لوحة التحكم</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+body{margin:0;background:#07070b;color:#fff;font-family:Arial,sans-serif}.wrap{max-width:1050px;margin:40px auto;padding:20px}
+.card{background:#11111a;border:1px solid #292938;border-radius:20px;padding:24px;margin-bottom:18px}
+h1{margin-top:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;margin-bottom:6px;color:#bbb}.field{margin-bottom:14px}
+input,textarea{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #333;background:#090910;color:#fff}
+button{border:0;padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#9b5cff,#ff3ea5);color:#fff;font-weight:bold;cursor:pointer}
+.secondary{background:#242432}.danger{background:#7d2020}.hidden{display:none}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #292938;text-align:right;font-size:14px}.status{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}.pending{background:#3a2d05;color:#ffd86b}.confirmed{background:#10351f;color:#8dffb2}.cancelled{background:#3a1212;color:#ff9b9b}.rejected{background:#3a1212;color:#ff9b9b}.actions button{padding:7px 10px;font-size:12px;margin:2px}.wa{background:#128c7e}.reason{font-size:12px;color:#aaa;display:block;margin-top:5px;max-width:220px}.menu-group-admin{margin:20px 0 26px}.menu-group-admin h3{margin:0 0 10px;padding:10px 14px;border-radius:12px;background:#171722;border-right:4px solid #9b5cff}.price-edit{display:flex;gap:6px;align-items:center}.price-edit input{width:110px;padding:8px;border-radius:8px}.price-save{padding:7px 9px!important;font-size:12px}
+.notice{padding:12px;border-radius:10px;background:#10251d;color:#9cffc9;margin-bottom:15px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.top{display:block}.top button{margin-top:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="login" class="card">
+    <h1>🔐 VIBES Admin</h1>
+    <p>دخول لوحة التحكم</p>
+    <div class="field"><label>اسم المستخدم</label><input id="user"></div>
+    <div class="field"><label>كلمة المرور</label><input id="pass" type="password"></div>
+    <button onclick="login()">دخول</button>
+    <p id="loginMsg"></p>
+  </div>
+
+  <div id="dashboard" class="hidden">
+    <div class="top">
+      <h1>🎮 لوحة تحكم VIBES</h1>
+      <div><button class="secondary" onclick="location.href='/'">عرض الموقع</button> <button class="danger" onclick="logout()">خروج</button></div>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ بيانات الموقع</h2>
+      <div id="saved" class="notice hidden">تم الحفظ بنجاح ✅</div>
+      <div class="grid">
+        <div class="field"><label>اسم المكان</label><input id="name"></div>
+        <div class="field"><label>التقييم</label><input id="rating"></div>
+        <div class="field"><label>وصف الموقع الرئيسي</label><input id="tagline"></div>
+        <div class="field"><label>رقم واتساب استقبال الحجوزات</label><input id="whatsapp" placeholder="2010xxxxxxxx"></div>
+        <div class="field"><label>العنوان</label><input id="address"></div>
+        <div class="field"><label>Plus Code</label><input id="plusCode"></div>
+        <div class="field"><label>سعر PS5 / الساعة</label><input id="ps5Price"></div>
+      </div>
+      <button onclick="save()">💾 حفظ التعديلات</button>
+    </div>
+
+    <div class="card">
+      <div class="top"><h2>🍔 إدارة المنيو</h2><button onclick="openMenuForm()">➕ إضافة صنف</button></div>
+      <p style="color:#aaa">بدل ما تكتب الأصناف واحد واحد، ارفع ملف Excel أو CSV مرة واحدة.</p>
+      <div class="grid">
+        <div class="field"><label>ملف Excel / CSV</label><input id="menuFile" type="file" accept=".xlsx,.xls,.csv,text/csv"></div>
+        <div class="field"><label>طريقة الاستيراد</label><select id="importMode"><option value="append">إضافة الأصناف للمنيو الحالية</option><option value="replace">استبدال المنيو الحالية</option></select></div>
+      </div>
+      <div class="actions"><button onclick="downloadTemplate()">📄 تحميل نموذج Excel</button> <button class="secondary" onclick="importMenuFile()">📥 استيراد المنيو</button></div>
+      <div style="margin-top:18px;border-top:1px solid #292938;padding-top:18px">
+        <h3 style="margin-top:0">📋 أو الصق المنيو مباشرة</h3>
+        <p style="color:#aaa;margin-top:0">كل سطر = صنف واحد، واستخدم <b>|</b> بين الاسم والسعر والتصنيف والوصف.</p>
+        <textarea id="menuPaste" rows="8" placeholder="Classic Burger | 250 | Burgers | Beef burger with cheese
+Chicken Burger | 220 | Burgers | Crispy chicken burger
+Margherita Pizza | 200 | Pizza | Tomato and mozzarella"></textarea>
+        <div class="actions" style="margin-top:10px"><button onclick="importPastedMenu()">📥 استيراد المنيو الملصوقة</button> <button class="secondary" onclick="document.getElementById('menuPaste').value=''">مسح</button></div>
+      </div>
+      <div id="menuMsg" class="notice hidden"></div>
+      <div id="menuForm" class="hidden" style="margin-top:15px">
+        <div class="grid">
+          <div class="field"><label>اسم الصنف</label><input id="mName"></div>
+          <div class="field"><label>السعر</label><input id="mPrice"></div>
+          <div class="field"><label>التصنيف</label><input id="mCategory"></div>
+          <div class="field"><label>الوصف</label><input id="mDescription"></div>
+        </div>
+        <button onclick="saveMenuItem()">💾 حفظ الصنف</button> <button class="secondary" onclick="closeMenuForm()">إلغاء</button>
+      </div>
+      <div id="menuList" style="margin-top:18px">جاري تحميل المنيو...</div>
+    </div>
+
+    <div class="card">
+      <h2>📋 آخر الحجوزات</h2>
+      <div id="bookings">جاري التحميل...</div>
+    </div>
+  </div>
+</div>
+<script>
+async function api(url,opts={}){const r=await fetch(url,opts);let d={};try{d=await r.json()}catch{};return {ok:r.ok,data:d}}
+async function check(){
+ const r=await api('/api/me');
+ if(r.data.loggedIn){document.getElementById('login').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');load();loadMenu();}
+}
+async function login(){
+ const r=await api('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:user.value,password:pass.value})});
+ if(r.ok) location.reload(); else loginMsg.textContent='بيانات الدخول غير صحيحة';
+}
+async function logout(){await api('/api/logout',{method:'POST'});location.reload()}
+async function load(){
+ const r=await api('/api/settings'); if(r.ok){Object.entries(r.data).forEach(([k,v])=>{const e=document.getElementById(k);if(e)e.value=v||''})}
+ const b=await api('/api/bookings');
+ if(b.ok && b.data.length){
+   bookings.innerHTML='<table><tr><th>رقم الحجز</th><th>الاسم</th><th>الهاتف</th><th>التاريخ</th><th>الوقت</th><th>النوع</th><th>المدة</th><th>الحالة</th><th>إجراء</th></tr>'+
+   b.data.map(x=>{
+     const raw=x.status||'pending';
+     const st=raw==='cancelled'?'rejected':raw;
+     const label=st==='confirmed'?'مؤكد':st==='rejected'?'مرفوض':'قيد المراجعة';
+     const reason=st==='rejected' && x.rejection_reason ? `<span class="reason">سبب الرفض: ${esc(x.rejection_reason)}</span>` : '';
+     const actions=st==='pending'
+       ? `<button onclick="setStatus(${x.id},'confirmed')">✅ تأكيد</button><button class="danger" onclick="rejectBooking(${x.id})">❌ رفض</button>`
+       : `<button class="secondary" onclick="setStatus(${x.id},'pending',false)">↩️ إعادة للمراجعة</button>`;
+     return `<tr><td>#${esc(x.id)}</td><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td>${esc(x.date)}</td><td>${esc(x.time)}</td><td>${esc(x.type)}</td><td>${esc(x.hours)}</td><td><span class="status ${st}">${label}</span>${reason}</td><td class="actions">${actions}<button class="wa" onclick="sendWhatsApp(${x.id})">📱 واتساب</button></td></tr>`;
+   }).join('')+'</table>';
+ }else bookings.textContent='لا توجد حجوزات مسجلة حتى الآن.';
+}
+
+function normalizePhone(phone){
+ let n=String(phone||'').replace(/\D/g,'');
+ if(n.startsWith('00')) n=n.slice(2);
+ if(n.startsWith('01')) n='20'+n;
+ if(n.startsWith('1') && n.length===10) n='20'+n;
+ return n;
+}
+
+function bookingMessage(x){
+ const st=x.status==='confirmed'?'تم تأكيد حجزك ✅':x.status==='rejected'?'تم رفض طلب حجزك ❌':'طلب حجزك قيد المراجعة 🟡';
+ let msg=`🎮 *VIBES (PlayStation & Café)*\n\n${st}\n🆔 رقم الحجز: #${x.id}\n👤 الاسم: ${x.name}\n📅 التاريخ: ${x.date}\n⏰ الوقت: ${x.time}\n⌛ المدة: ${x.hours}\n🎯 نوع الحجز: ${x.type}`;
+ if(x.notes) msg+=`\n📝 الملاحظات: ${x.notes}`;
+ if(x.status==='rejected' && x.rejection_reason) msg+=`\n\n📌 *سبب الرفض:* ${x.rejection_reason}`;
+ if(x.status==='confirmed') msg+='\n\nنتشرف بيك ❤️ ونستناك في VIBES.';
+ if(x.status==='pending') msg+='\n\nهنراجع الطلب ونأكد معاك في أقرب وقت.';
+ return msg;
+}
+
+async function sendWhatsApp(id){
+ const b=await api('/api/bookings');
+ if(!b.ok) return alert('تعذر تحميل الحجز');
+ const x=b.data.find(v=>Number(v.id)===Number(id));
+ if(!x) return alert('الحجز غير موجود');
+ const n=normalizePhone(x.phone);
+ if(!n) return alert('رقم العميل غير صالح');
+ window.open('https://wa.me/'+n+'?text='+encodeURIComponent(bookingMessage(x)),'_blank');
+}
+
+async function setStatus(id,status,send=true){
+ const payload={status};
+ const r=await api('/api/bookings/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+ if(!r.ok) return alert('تعذر تحديث حالة الحجز');
+ if(send && (status==='confirmed' || status==='rejected')) window.open('https://wa.me/'+normalizePhone(r.data.booking.phone)+'?text='+encodeURIComponent(bookingMessage(r.data.booking)),'_blank');
+ load();
+}
+
+async function rejectBooking(id){
+ const reason=prompt('اكتب سبب رفض الحجز الذي سيظهر للعميل على واتساب:');
+ if(reason===null) return;
+ if(!reason.trim()) return alert('لازم تكتب سبب الرفض.');
+ const r=await api('/api/bookings/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:'rejected',rejection_reason:reason.trim()})});
+ if(!r.ok) return alert('تعذر رفض الحجز');
+ window.open('https://wa.me/'+normalizePhone(r.data.booking.phone)+'?text='+encodeURIComponent(bookingMessage(r.data.booking)),'_blank');
+ load();
+}
+function esc(x){return String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+let editingMenuId=null;
+async function loadMenu(){
+ const r=await api('/api/menu/all');
+ if(!r.ok){menuList.textContent='تعذر تحميل المنيو';return;}
+ const items=r.data||[];
+ if(!items.length){menuList.textContent='لا توجد أصناف في المنيو.';return;}
+ const groups={};
+ items.forEach(x=>{const cat=(x.category||'أصناف متنوعة').trim()||'أصناف متنوعة';(groups[cat] ||= []).push(x);});
+ menuList.innerHTML=Object.entries(groups).map(([cat,group])=>`<div class="menu-group-admin"><h3>${esc(cat)}</h3><table><tr><th>الصنف</th><th>السعر</th><th>الوصف</th><th>الحالة</th><th>إجراء</th></tr>${group.map(x=>`<tr><td>${esc(x.name)}</td><td><div class="price-edit"><input id="price-${x.id}" value="${esc(x.price)}" aria-label="سعر ${esc(x.name)}"><button class="price-save" onclick="savePrice(${x.id})">💾 حفظ</button></div></td><td>${esc(x.description)}</td><td>${x.visible!==false?'ظاهر':'مخفي'}</td><td class="actions"><button onclick='editMenu(${JSON.stringify(x)})'>✏️ تعديل</button><button class="secondary" onclick="toggleMenu(${x.id},${x.visible!==false})">${x.visible!==false?'👁️ إخفاء':'👁️ إظهار'}</button><button class="danger" onclick="deleteMenu(${x.id})">🗑️ حذف</button></td></tr>`).join('')}</table></div>`).join('');
+}
+function openMenuForm(){editingMenuId=null;mName.value='';mPrice.value='';mCategory.value='';mDescription.value='';menuForm.classList.remove('hidden');}
+function closeMenuForm(){menuForm.classList.add('hidden');editingMenuId=null;}
+function editMenu(x){editingMenuId=x.id;mName.value=x.name||'';mPrice.value=x.price||'';mCategory.value=x.category||'';mDescription.value=x.description||'';menuForm.classList.remove('hidden');window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
+async function saveMenuItem(){
+ const body={name:mName.value.trim(),price:mPrice.value.trim(),category:mCategory.value.trim(),description:mDescription.value.trim()};
+ if(!body.name)return alert('اكتب اسم الصنف');
+ const r=await api(editingMenuId?'/api/menu/'+editingMenuId:'/api/menu',{method:editingMenuId?'PUT':'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ if(!r.ok)return alert('حصل خطأ في حفظ الصنف'); closeMenuForm(); loadMenu();
+}
+async function savePrice(id){
+ const input=document.getElementById('price-'+id); if(!input)return;
+ const r=await api('/api/menu/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({price:input.value.trim()})});
+ if(!r.ok)return alert('حصل خطأ في حفظ السعر');
+ input.style.borderColor='#2ecc71'; setTimeout(()=>input.style.borderColor='',900);
+}
+async function toggleMenu(id,current){const r=await api('/api/menu/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({visible:!current})});if(r.ok)loadMenu();}
+async function deleteMenu(id){if(!confirm('حذف الصنف نهائيًا؟'))return;const r=await api('/api/menu/'+id,{method:'DELETE'});if(r.ok)loadMenu();}
+function downloadTemplate(){
+ const rows=[['الاسم','السعر','التصنيف','الوصف','ظاهر'],['Burger','250','Burgers','Beef burger','نعم'],['Pasta','180','Pasta','Alfredo pasta','نعم']];
+ if(window.XLSX){const ws=XLSX.utils.aoa_to_sheet(rows),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Menu');XLSX.writeFile(wb,'VIBES_Menu_Template.xlsx');}
+ else{const blob=new Blob([rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='VIBES_Menu_Template.csv';a.click();}
+}
+async function importMenuFile(){
+ const file=menuFile.files[0]; if(!file)return alert('اختار ملف Excel أو CSV أولاً');
+ try{
+  let rows=[];
+  if(/\.csv$/i.test(file.name)){const text=await file.text(); rows=parseCSV(text);} else {if(!window.XLSX)throw new Error('xlsx_unavailable'); const buf=await file.arrayBuffer(); const wb=XLSX.read(buf,{type:'array'}); const ws=wb.Sheets[wb.SheetNames[0]]; rows=XLSX.utils.sheet_to_json(ws,{defval:''});}
+  const mapped=rows.map(r=>({name:r['الاسم']??r.name??r.Name??'',price:r['السعر']??r.price??r.Price??'',category:r['التصنيف']??r.category??r.Category??'',description:r['الوصف']??r.description??r.Description??'',visible:r['ظاهر']??r.visible??r.Visible??'نعم'}));
+  const r=await api('/api/menu/import',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({rows:mapped,mode:importMode.value})});
+  if(!r.ok)throw new Error(r.data.error||'import_failed'); menuMsg.textContent=`تم استيراد ${r.data.count} صنف بنجاح ✅`;menuMsg.classList.remove('hidden');loadMenu();
+ }catch(e){alert('لم يتم استيراد الملف. تأكد أن الأعمدة هي: الاسم، السعر، التصنيف، الوصف، ظاهر');console.error(e);}
+}
+async function importPastedMenu(){
+ const text=document.getElementById('menuPaste').value.trim();
+ if(!text)return alert('الصق المنيو أولاً');
+ const rows=[];
+ for(const line of text.split(/\r?\n/)){
+   const parts=line.split('|').map(x=>x.trim());
+   if(!parts[0]) continue;
+   rows.push({name:parts[0],price:parts[1]||'',category:parts[2]||'',description:parts.slice(3).join(' | '),visible:'نعم'});
+ }
+ if(!rows.length)return alert('لم يتم العثور على أصناف صالحة');
+ const r=await api('/api/menu/import',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({rows,mode:importMode.value})});
+ if(!r.ok)return alert('حصل خطأ أثناء استيراد المنيو');
+ menuMsg.textContent=`تم استيراد ${r.data.count} صنف بنجاح ✅`;
+ menuMsg.classList.remove('hidden');
+ document.getElementById('menuPaste').value='';
+ loadMenu();
+}
+function parseCSV(text){const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(x=>x.trim());if(!lines.length)return[];const delimiter=(lines[0].split(';').length>lines[0].split(',').length)?';':',';const parse=l=>{const out=[];let cur='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'&&l[i+1]==='"'){cur+='"';i++;continue}if(c==='"'){q=!q;continue}if(c===delimiter&&!q){out.push(cur);cur='';continue}}out.push(cur);return out};const h=parse(lines[0]).map(x=>x.trim());return lines.slice(1).map(l=>{const a=parse(l),o={};h.forEach((k,i)=>o[k]=a[i]??'');return o;});}
+
+async function save(){
+ const data={name:name.value,rating:rating.value,tagline:tagline.value,whatsapp:whatsapp.value,address:address.value,plusCode:plusCode.value,ps5Price:ps5Price.value};
+ const r=await api('/api/settings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+ if(r.ok){saved.classList.remove('hidden');setTimeout(()=>saved.classList.add('hidden'),2500)}
+}
+check();
+</script>
+</body>
+</html>

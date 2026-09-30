@@ -1,0 +1,942 @@
+{
+  "settings": {
+    "name": "VIBES (PlayStation & Café)",
+    "rating": "5.0",
+    "tagline": "PlayStation & Café في شبرا الخيمة — جيمينج، مشروبات وسناكس، وقعدة معمولة عشان تستمتع بكل لحظة.",
+    "whatsapp": "201028582811",
+    "address": "16 أمين مشهور، بيجام، قسم أول شبرا الخيمة، محافظة القليوبية",
+    "plusCode": "47JH+9R — قسم أول شبرا الخيمة",
+    "ps5Price": "Pc4 Singel 35  Mulity 40  Room4 Singel 50  Mulity 60  Room5 Singel 70  Muilty 80"
+  },
+  "bookings": [],
+  "menu": [
+    {
+      "id": 1790790386850,
+      "name": "VIBES - MENU",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386851,
+      "name": "الصيغة: الاسم",
+      "price": "السعر",
+      "category": "التصنيف",
+      "description": "الوصف",
+      "visible": true
+    },
+    {
+      "id": 1790790386852,
+      "name": "مشروبات غازية",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386853,
+      "name": "مياه كبيرة",
+      "price": "15",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386854,
+      "name": "مياه صغيرة",
+      "price": "10",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386855,
+      "name": "بيبسي دايت",
+      "price": "25",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386856,
+      "name": "ميرندا",
+      "price": "25",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386857,
+      "name": "بيبسي",
+      "price": "25",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386858,
+      "name": "سفن",
+      "price": "25",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386859,
+      "name": "شويبس",
+      "price": "25",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386860,
+      "name": "استنج",
+      "price": "25",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386861,
+      "name": "تويست",
+      "price": "30",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386862,
+      "name": "فيروزي",
+      "price": "30",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386863,
+      "name": "فروز",
+      "price": "30",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386864,
+      "name": "ماكس كولا",
+      "price": "20",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386865,
+      "name": "V كولا",
+      "price": "30",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386866,
+      "name": "ريدبول",
+      "price": "65",
+      "category": "مشروبات غازية",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386867,
+      "name": "مشروبات ساخنة",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386868,
+      "name": "شاي",
+      "price": "10",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386869,
+      "name": "شاي فتلة",
+      "price": "15",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386870,
+      "name": "شاي نعناع",
+      "price": "15",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386871,
+      "name": "شاي حليب",
+      "price": "25",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386872,
+      "name": "شاي براد صغير",
+      "price": "25",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386873,
+      "name": "شاي براد كبير",
+      "price": "40",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386874,
+      "name": "ينسون",
+      "price": "20",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386875,
+      "name": "نعناع",
+      "price": "15",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386876,
+      "name": "كركديه",
+      "price": "15",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386877,
+      "name": "زنجبيل",
+      "price": "20",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386878,
+      "name": "قرفة",
+      "price": "20",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386879,
+      "name": "قرفة حليب",
+      "price": "30",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386880,
+      "name": "ليمون سخن",
+      "price": "20",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386881,
+      "name": "حلبة",
+      "price": "15",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386882,
+      "name": "حلبة حليب",
+      "price": "30",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386883,
+      "name": "كوكتيل أعشاب",
+      "price": "25",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386884,
+      "name": "سحلب سادة",
+      "price": "25",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386885,
+      "name": "سحلب مكسرات",
+      "price": "30",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386886,
+      "name": "سحلب فواكه",
+      "price": "40",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386887,
+      "name": "قهوة سنجل",
+      "price": "20",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386888,
+      "name": "قهوة دبل",
+      "price": "30",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386889,
+      "name": "نسكافيه بلاك",
+      "price": "20",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386890,
+      "name": "نسكافيه حليب",
+      "price": "30",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386891,
+      "name": "كابتشينو",
+      "price": "40",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386892,
+      "name": "موكا",
+      "price": "45",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386893,
+      "name": "لاتيه",
+      "price": "40",
+      "category": "مشروبات ساخنة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386894,
+      "name": "شيشة وسناكس",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386895,
+      "name": "قص / سلوم / زغلول",
+      "price": "10",
+      "category": "شيشة وسناكس",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386896,
+      "name": "قص / سلوم / زغلول دبل",
+      "price": "15",
+      "category": "شيشة وسناكس",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386897,
+      "name": "فواكه نوع / مكس",
+      "price": "50",
+      "category": "شيشة وسناكس",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386898,
+      "name": "فواكه دبل",
+      "price": "70",
+      "category": "شيشة وسناكس",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386899,
+      "name": "فشار",
+      "price": "15",
+      "category": "شيشة وسناكس",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386900,
+      "name": "كرت نت",
+      "price": "5",
+      "category": "شيشة وسناكس",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386907,
+      "name": "عالم الشوكولاتة",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386908,
+      "name": "أوريو",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386909,
+      "name": "هوزز",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386910,
+      "name": "توينكي",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386911,
+      "name": "شيكو ميكس",
+      "price": "60",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386912,
+      "name": "مولتن كيك",
+      "price": "85",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386913,
+      "name": "تشيز كيك",
+      "price": "85",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386914,
+      "name": "آيس كريم فانيليا",
+      "price": "45",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386915,
+      "name": "آيس كريم شوكولاتة",
+      "price": "45",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386916,
+      "name": "آيس كوفي",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386917,
+      "name": "آيس موكا",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386918,
+      "name": "فرابتشينو كارميل",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386919,
+      "name": "فرابتشينو شوكليت",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386920,
+      "name": "فرابتشينو فانيليا",
+      "price": "50",
+      "category": "عالم الشوكولاتة",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386921,
+      "name": "سموذي",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386922,
+      "name": "سموزي أفوكادو",
+      "price": "85",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386923,
+      "name": "سموزي كيوي",
+      "price": "75",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386924,
+      "name": "سموزي بطيخ",
+      "price": "55",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386925,
+      "name": "سموزي خوخ",
+      "price": "55",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386926,
+      "name": "سموزي مانجو",
+      "price": "60",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386927,
+      "name": "سموزي فراولة",
+      "price": "45",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386928,
+      "name": "سموزي جوافة",
+      "price": "45",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386929,
+      "name": "سموزي برتقال",
+      "price": "45",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386930,
+      "name": "سموزي ليمون",
+      "price": "35",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386931,
+      "name": "سموزي ليمون نعناع",
+      "price": "40",
+      "category": "سموذي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386932,
+      "name": "عصائر",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386933,
+      "name": "أفوكادو",
+      "price": "80",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386934,
+      "name": "كيوي",
+      "price": "70",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386935,
+      "name": "بطيخ",
+      "price": "50",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386936,
+      "name": "خوخ",
+      "price": "50",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386937,
+      "name": "مانجو",
+      "price": "50",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386938,
+      "name": "مانجو سبانش",
+      "price": "65",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386939,
+      "name": "فراولة",
+      "price": "40",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386940,
+      "name": "فراولة بحليب",
+      "price": "45",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386941,
+      "name": "جوافة",
+      "price": "40",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386942,
+      "name": "جوافة بحليب",
+      "price": "45",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386943,
+      "name": "موز بحليب",
+      "price": "45",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386944,
+      "name": "برتقال فريش",
+      "price": "40",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386945,
+      "name": "ليمون فريش",
+      "price": "30",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386946,
+      "name": "ليمون فرنساوي",
+      "price": "40",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386947,
+      "name": "ليمون نعناع",
+      "price": "35",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386948,
+      "name": "ليمون نعناع فرنساوي",
+      "price": "45",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386949,
+      "name": "عنب سائع",
+      "price": "30",
+      "category": "عصائر",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386950,
+      "name": "ميلك شيك",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386951,
+      "name": "ميلك شيك أفوكادو",
+      "price": "100",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386952,
+      "name": "ميلك شيك كيوي",
+      "price": "80",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386953,
+      "name": "ميلك شيك بطيخ",
+      "price": "65",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386954,
+      "name": "ميلك شيك خوخ",
+      "price": "65",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386955,
+      "name": "ميلك شيك مانجو",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386956,
+      "name": "ميلك شيك فراولة",
+      "price": "50",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386957,
+      "name": "ميلك شيك جوافة",
+      "price": "55",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386958,
+      "name": "ميلك شيك موز",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386959,
+      "name": "ميلك شيك ليمون",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386960,
+      "name": "ميلك شيك فانيليا",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386961,
+      "name": "ميلك شيك شوكولاتة",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386962,
+      "name": "ميلك شيك كارميل",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386963,
+      "name": "ميلك شيك بلوبيري",
+      "price": "60",
+      "category": "ميلك شيك",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386964,
+      "name": "عالم الزبادي",
+      "price": "",
+      "category": "",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386965,
+      "name": "زبادي سادة",
+      "price": "30",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386966,
+      "name": "زبادي عسل",
+      "price": "35",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386967,
+      "name": "زبادي مانجو",
+      "price": "60",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386968,
+      "name": "زبادي فراولة",
+      "price": "50",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386969,
+      "name": "زبادي بلوبيري",
+      "price": "50",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386970,
+      "name": "زبادي فواكه",
+      "price": "65",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": 1790790386971,
+      "name": "زبادي Vibes",
+      "price": "80",
+      "category": "عالم الزبادي",
+      "description": "",
+      "visible": true
+    }
+  ]
+}

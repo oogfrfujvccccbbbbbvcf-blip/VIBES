@@ -1,0 +1,26 @@
+VIBES - نظام الحجز وإدارة الحالات
+
+المزايا:
+- حجز العميل يتسجل في vibes-data.json.
+- كل حجز يبدأ بحالة: قيد المراجعة.
+- من لوحة الأدمن: تأكيد الحجز أو رفضه.
+- عند الرفض، يطلب النظام سبب الرفض.
+- بعد التأكيد أو الرفض يفتح WhatsApp تلقائياً على رقم العميل برسالة جاهزة بالحالة.
+- يوجد زر WhatsApp لإعادة إرسال رسالة الحالة في أي وقت.
+- حالات الحجز: قيد المراجعة / مؤكد / مرفوض.
+
+مهم:
+واتساب Web/Desktop لا يسمح للموقع بإرسال رسالة صامتة من تلقاء نفسه بدون تفاعل المستخدم. النظام يفتح المحادثة للعميل مع الرسالة جاهزة، ثم تضغط إرسال في واتساب.
+
+التشغيل:
+1) npm install
+2) npm start
+3) افتح http://localhost:3000
+4) لوحة التحكم: http://localhost:3000/admin
+
+بيانات الدخول الافتراضية موجودة في server.js ويمكن تغييرها لاحقاً قبل النشر العام.
+
+GITHUB / DEPLOYMENT NOTE
+- node_modules is intentionally excluded; the hosting service runs npm install.
+- Set ADMIN_USER, ADMIN_PASSWORD, SESSION_SECRET, and PORT as environment variables on the host.
+- The included vibes-data.json has bookings cleared to avoid publishing customer personal data.
